@@ -25,10 +25,12 @@
             z-index: 2; /* Ensure it's above the video */
         }
         #videoContainer {
-            position: relative; /* Changed to relative */
+            position: fixed; /* Full screen */
+            top: 0;
+            left: 0;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0; /* For aspect ratio */
+            height: 100%;
+            z-index: 1; /* Below the ad */
         }
         iframe {
             position: absolute;
