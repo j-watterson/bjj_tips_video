@@ -7,7 +7,8 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
+            /*height: 100%;*/
+            overflow: auto; /* Allows scrolling */
         }
         #adContainer {
             display: none; /* Hide initially */
@@ -97,6 +98,10 @@
 
 <div id="videoContainer">
     <iframe id="youtubeVideo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<div class="buttons-container">
+    <button onclick="hideAd()">Skip Ad</button>
+    <button onclick="window.open('https://amzn.to/3P1dqep', '_blank')">Shop Amazon Now</button>
 </div>
 
 <div id="adContainer">
