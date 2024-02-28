@@ -63,10 +63,16 @@
         button {
             margin: 5px; /* Adds space between buttons */
             cursor: pointer; /* Indicates an actionable button */
+            padding: 20px 40px; /* Increased padding for better mobile interaction */
+            font-size: 1.5em; /* Larger font size for better readability */
         }
-        button:nth-child(3) {
-            padding: 20px 40px; /* Increase padding to make the button larger */
-            font-size: 1.5em; /* Makes the font larger */
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            button {
+                padding: 30px 60px; /* Even larger padding for smaller screens */
+                font-size: 2em; /* Larger font size for better readability on mobile */
+            }
         }
     </style>
 </head>
@@ -83,7 +89,7 @@
     <div class="buttons-container">
         <p>Shop Amazon Now!</p>
         <button onclick="hideAd()">Skip Ad</button>
-        <button onclick="window.open('https://amzn.to/3P1dqep', '_blank')" style="padding: 20px 40px; font-size: 1.5em;">Shop Amazon Now</button>
+        <button onclick="window.open('https://amzn.to/3P1dqep', '_blank')">Shop Amazon Now</button>
     </div>
 </div>
 
