@@ -60,22 +60,35 @@
             justify-content: center;
             align-items: center;
         }
-        button {
-            margin: 5px; /* Adds space between buttons */
-            cursor: pointer; /* Indicates an actionable button */
-            padding: 20px 40px; /* Increased padding for better mobile interaction */
-            font-size: 1.5em; /* Larger font size for better readability */
-            border-radius: 20px; /* Rounded corners */
-        }
+    button {
+        margin: 5px;
+        cursor: pointer;
+        padding: 20px 40px;
+        font-size: 1.5em;
+        border-radius: 20px; /* Rounded corners */
+        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradient background */
+        color: white; /* Better visibility on gradient */
+        border: none; /* Remove default border */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+        text-transform: uppercase; /* Optional: Makes text uppercase for a more button-like appearance */
+        font-weight: bold; /* Optional: Makes the font bold */
+        transition: all 0.3s ease; /* Smooth transition for hover effects */
+    }
 
-        /* Responsive adjustments for smaller screens */
-        @media (max-width: 600px) {
-            button {
-                padding: 30px 60px; /* Even larger padding for smaller screens */
-                font-size: 2em; /* Larger font size for better readability on mobile */
-                border-radius: 20px;
-            }
+    button:hover, button:focus {
+        background-image: linear-gradient(to left, #6a11cb 0%, #2575fc 100%); /* Change direction of gradient on hover */
+        box-shadow: 0 6px 8px rgba(0,0,0,0.15); /* Larger shadow on hover */
+        transform: translateY(-2px); /* Lift button up slightly on hover */
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 600px) {
+        button {
+            padding: 30px 60px;
+            font-size: 2em;
+            border-radius: 30px; /* Adjusted for larger touch targets */
         }
+    }
     </style>
 </head>
 <body>
