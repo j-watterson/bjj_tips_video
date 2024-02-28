@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic YouTube Video with Scrollable Content</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #adContainer {
+            display: none; /* Hide initially */
+            position: fixed; /* Full screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75); /* Darker background */
+            color: white;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: space-around; /* Distribute space evenly */
+            align-items: center;
+            text-align: center;
+            z-index: 2; /* Ensure it's above the video */
+        }
+        #videoContainer {
+            position: fixed; /* Full screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Below the ad */
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .img-container {
+            width: 100%; /* Full width */
+            height: 60%; /* Adjusted to 60% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px; /* Added padding on top */
+        }
+        .img-container img {
+            max-height: calc(100% - 20px); /* Adjust height to account for padding */
+            max-width: 100%; /* Ensure the image is responsive within its container */
+        }
+        .buttons-container {
+            width: 100%; /* Full width */
+            height: 40%; /* Adjusted for the remaining space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            margin: 5px; /* Adds space between buttons */
+            cursor: pointer; /* Indicates an actionable button */
+            padding: 20px 40px; /* Increased padding for better mobile interaction */
+            font-size: 1.5em; /* Larger font size for better readability */
+            border-radius: 20px; /* Rounded corners */
+        }
 
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            button {
+                padding: 30px 60px; /* Even larger padding for smaller screens */
+                font-size: 2em; /* Larger font size for better readability on mobile */
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="videoContainer">
+    <iframe id="youtubeVideo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<div id="adContainer">
+    <div class="img-container">
+        <img src="https://ads.bjj.tips/rashguards/gold-bjj-foundation.png" alt="Gold BJJ Foundation Rashguard">
+    </div>
+    <div class="buttons-container">
+        <button onclick="hideAd()">Skip Ad</button>
+        <button onclick="window.open('https://amzn.to/3P1dqep', '_blank')">Shop Amazon Now</button>
+    </div>
+</div>
+
+<script>
+    function getQueryStringParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function showAd() {
+        document.getElementById('adContainer').style.display = 'flex';
+        setTimeout(hideAd, 10000); // Hide the ad automatically after 10 seconds
+    }
+
+    function hideAd() {
+        document.getElementById('adContainer').style.display = 'none';
+    }
+
+    // Set the video src from URL parameters
+    function setVideoSource() {
+        var videoId = getQueryStringParameter("video");
+        var videoSrc = "https://www.youtube.com/embed/" + videoId;
+        document.getElementById("youtubeVideo").src = videoSrc;
+    }
+
+    window.onload = function() {
+        setVideoSource();
+        showAd();
+    };
+</script>
+
+</body>
+</html>
